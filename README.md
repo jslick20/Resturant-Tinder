@@ -15,7 +15,7 @@ A simple prototype for a group-based restaurant selection app inspired by Tinder
 
 ```
 server/   # Node.js + Express backend
-client/   # Front‑end app (React or React Native)
+client/   # Front‑end app (HTML/JavaScript demo)
 ```
 
 ### Backend (`server`)
@@ -24,8 +24,14 @@ The server exposes an API endpoint `/restaurants` that accepts query parameters 
 
 ### Front‑end (`client`)
 
-wxho8g-codex/create-tinder-style-food-swiping-app
-A lightweight HTML/JavaScript interface is included in `client/index.html`. It fetches restaurants from the server and lets you like or skip each option. Start by opening `client/login.html` in your browser; after entering a user name you will be taken to the swiping interface. Use `client/friends.html` to add friends.
+3. Start the server (run from the `server` directory):
+   cd server
+4. Serve the client files with a simple web server to avoid CORS issues. For example:
+   ```bash
+   cd client
+   python3 -m http.server 8080
+   ```
+   Then open `http://localhost:8080/login.html` in your browser.
 =======
 
  main

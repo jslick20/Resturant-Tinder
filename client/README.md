@@ -1,8 +1,5 @@
 # Client
 
-Small vanilla JS demo for swiping through restaurants. Start with `login.html` to enter a user name, then `index.html` will show restaurants to swipe through after the server is running. Use `friends.html` to manage your friend list.
-
-Possible enhancements:
-- Proper authentication and friend list management
-- Persistent sessions so swipes are saved
-- Real Tinder-style card animations (implemented with basic CSS transitions)
+Small vanilla JS demo for swiping through restaurants.
+Start the server, then serve this directory with any static file server and open `login.html` in your browser.
+After logging in you can add friends and swipe through restaurants. Swipes and friend lists are persisted on the server and card transitions mimic the Tinder app using basic CSS.

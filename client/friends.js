@@ -1,14 +1,17 @@
 function requireLogin() {
   const user = localStorage.getItem('user');
-  if (!user) {
+  const token = localStorage.getItem('token');
+  if (!user || !token) {
     window.location.href = 'login.html';
     return null;
   }
-  return user;
+  return { user, token };
 }
 
-async function loadFriends(user) {
-  const res = await fetch(`/friends/${encodeURIComponent(user)}`);
+async function loadFriends(login) {
+  const res = await fetch(`/friends/${encodeURIComponent(login.user)}`, {
+    headers: { 'Authorization': login.token }
+  });
   const data = await res.json();
   const list = document.getElementById('list');
   list.innerHTML = '';
@@ -20,24 +23,24 @@ async function loadFriends(user) {
 }
 
 document.getElementById('add').onclick = async () => {
-  const user = requireLogin();
-  if (!user) return;
+  const login = requireLogin();
+  if (!login) return;
   const friendId = document.getElementById('friend-id').value.trim();
   if (!friendId) return;
   const res = await fetch('/friends/add', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ userId: user, friendId })
+    headers: { 'Content-Type': 'application/json', 'Authorization': login.token },
+    body: JSON.stringify({ friendId })
   });
   if (res.ok) {
     document.getElementById('status').textContent = 'Friend added';
-    loadFriends(user);
+    loadFriends(login);
   } else {
     document.getElementById('status').textContent = 'Error adding friend';
   }
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  const user = requireLogin();
-  if (user) loadFriends(user);
+  const login = requireLogin();
+  if (login) loadFriends(login);
 });
