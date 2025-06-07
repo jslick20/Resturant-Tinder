@@ -38,21 +38,8 @@ app.get('/restaurants', async (req, res) => {
   }
 
   try {
-    const url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json';
-    const params = {
-      key: GOOGLE_KEY,
-      location: `${lat},${lng}`,
-      radius,
-      type: 'restaurant',
-      keyword: cuisine
-    };
-    const { data } = await axios.get(url, { params });
-    const sorted = (data.results || [])
-      .filter(r => r.rating)
-      .sort((a, b) => b.rating - a.rating)
-      .slice(0, 3);
-
-    res.json(sorted);
+    const results = await fetchTopRestaurants({ lat, lng, radius, cuisine });
+    res.json(results);
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch places' });
   }
