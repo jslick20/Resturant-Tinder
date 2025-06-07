@@ -38,6 +38,10 @@ app.get('/restaurants', async (req, res) => {
   }
 
   try {
+ wxho8g-codex/create-tinder-style-food-swiping-app
+    const results = await fetchTopRestaurants({ lat, lng, radius, cuisine });
+    res.json(results);
+=======
     const url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json';
     const params = {
       key: GOOGLE_KEY,
@@ -53,6 +57,7 @@ app.get('/restaurants', async (req, res) => {
       .slice(0, 3);
 
     res.json(sorted);
+ main
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch places' });
   }
