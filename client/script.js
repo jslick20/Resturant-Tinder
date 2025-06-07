@@ -38,6 +38,7 @@ function showRestaurant() {
   card.innerHTML = `<h3>${r.name}</h3><p>${r.vicinity || ''}</p><p>Rating: ${r.rating}</p>`;
 }
 
+ wxho8g-codex/create-tinder-style-food-swiping-app
 function swipe(dir) {
   const card = document.getElementById('card');
   card.classList.add(dir === 'right' ? 'swipe-right' : 'swipe-left');
@@ -50,6 +51,17 @@ function swipe(dir) {
 
 document.getElementById('like').onclick = () => swipe('right');
 document.getElementById('skip').onclick = () => swipe('left');
+=======
+document.getElementById('like').onclick = () => {
+  current++;
+  showRestaurant();
+};
+
+document.getElementById('skip').onclick = () => {
+  current++;
+  showRestaurant();
+};
+ main
 
 document.addEventListener('DOMContentLoaded', () => {
   if (requireLogin()) {
