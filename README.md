@@ -24,7 +24,7 @@ The server exposes an API endpoint `/restaurants` that accepts query parameters 
 
 ### Front‑end (`client`)
 
-A minimal front‑end will display restaurants as cards and allow swiping left/right. When a match occurs, all users see the selected restaurant.
+
 
 ## Getting Started
 
