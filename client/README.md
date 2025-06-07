@@ -1,6 +1,6 @@
 # Client
 
-Small vanilla JS demo for swiping through restaurants. Open `index.html` in a browser after the server is running.
+Small vanilla JS demo for swiping through restaurants. Start with `login.html` to enter a user name, then `index.html` will show restaurants to swipe through after the server is running.
 
 Possible enhancements:
 - Proper authentication and friend list management

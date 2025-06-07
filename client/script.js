@@ -1,6 +1,16 @@
 let restaurants = [];
 let current = 0;
 
+function requireLogin() {
+  const user = localStorage.getItem('user');
+  if (!user) {
+    window.location.href = 'login.html';
+    return null;
+  }
+  document.getElementById('user').textContent = `Logged in as ${user}`;
+  return user;
+}
+
 async function loadRestaurants() {
   const params = new URLSearchParams({
     lat: 40.730610, // example coordinates (NYC)
@@ -38,4 +48,8 @@ document.getElementById('skip').onclick = () => {
   showRestaurant();
 };
 
-loadRestaurants();
+document.addEventListener('DOMContentLoaded', () => {
+  if (requireLogin()) {
+    loadRestaurants();
+  }
+});
