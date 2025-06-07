@@ -9,6 +9,7 @@ A simple prototype for a group-based restaurant selection app inspired by Tinder
 - **Top Rated**: For each cuisine or food genre, only the top three restaurants (based on Google ratings) are returned.
 - **Swipe to Match**: When all participants swipe "like" on the same restaurant, everyone is notified of the match.
 - **Friends List**: Add friends so you can quickly create new swiping sessions.
+- **Sessions API**: Backend endpoints to manage friends and create swiping sessions.
 
 ## Project Structure
 
@@ -41,5 +42,13 @@ A minimal front‑end will display restaurants as cards and allow swiping left/r
    node index.js
    ```
 4. The front‑end can be implemented with your choice of framework (React, React Native, etc.).
+
+### API Overview
+
+- `GET /restaurants` - Fetch top restaurants for a location.
+- `POST /friends/add` - Add two users as friends.
+- `GET /friends/:userId` - Get a user's friends.
+- `POST /sessions` - Start a session and retrieve restaurants.
+- `POST /sessions/:id/swipe` - Submit a swipe; returns a match flag when all participants like the same place.
 
 This is a minimal starting point. Feel free to extend it with user accounts, persistent storage, and real‑time updates.
