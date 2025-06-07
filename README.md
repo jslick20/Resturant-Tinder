@@ -24,10 +24,14 @@ The server exposes an API endpoint `/restaurants` that accepts query parameters 
 
 ### Front‑end (`client`)
 
+ 0fomhj-codex/create-tinder-style-food-swiping-app
+A lightweight HTML/JavaScript interface is included in `client/index.html`. It fetches restaurants from the server and lets you like or skip each option. Start by opening `client/login.html` in your browser; after entering a user name you will be taken to the swiping interface. Use `client/friends.html` to add friends.
+=======
 wxho8g-codex/create-tinder-style-food-swiping-app
 A lightweight HTML/JavaScript interface is included in `client/index.html`. It fetches restaurants from the server and lets you like or skip each option. Start by opening `client/login.html` in your browser; after entering a user name you will be taken to the swiping interface. Use `client/friends.html` to add friends.
 =======
 
+ main
  main
 
 ## Getting Started
@@ -37,10 +41,14 @@ A lightweight HTML/JavaScript interface is included in `client/index.html`. It f
    cd server
    npm install
    ```
+ 0fomhj-codex/create-tinder-style-food-swiping-app
+2. Copy `server/.env.example` to `server/.env` and add your Google Places API key:
+=======
  wxho8g-codex/create-tinder-style-food-swiping-app
 2. Copy `server/.env.example` to `server/.env` and add your Google Places API key:
 =======
 2. Create a `.env` file in `server/` with your Google Places API key:
+ main
  main
    ```
    GOOGLE_PLACES_KEY=your_api_key_here

@@ -5,10 +5,14 @@ Simple Express server that queries Google Places to return top three restaurants
 ## Usage
 
 1. Install dependencies with `npm install`.
+ 0fomhj-codex/create-tinder-style-food-swiping-app
+2. Copy `.env.example` to `.env` and add your `GOOGLE_PLACES_KEY`.
+=======
  wxho8g-codex/create-tinder-style-food-swiping-app
 2. Copy `.env.example` to `.env` and add your `GOOGLE_PLACES_KEY`.
 =======
 2. Create a `.env` file containing your `GOOGLE_PLACES_KEY`.
+ main
  main
 3. Start the server using `node index.js`.
 
