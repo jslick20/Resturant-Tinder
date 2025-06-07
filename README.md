@@ -24,7 +24,7 @@ The server exposes an API endpoint `/restaurants` that accepts query parameters 
 
 ### Front‑end (`client`)
 
-A lightweight HTML/JavaScript interface is included in `client/index.html`. It fetches restaurants from the server and lets you like or skip each option. Start by opening `client/login.html` in your browser; after entering a user name you will be taken to the swiping interface.
+
 
 ## Getting Started
 
