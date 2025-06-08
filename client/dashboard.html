@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Restaurant Tinder</title>
+  <style>
+    :root {
+      --primary: #007bff;
+      --secondary: #6c757d;
+      --bg: #f0f2f5;
+      --card-bg: #ffffff;
+      --text: #343a40;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .dashboard-card {
+      background: var(--card-bg);
+      width: 100%;
+      max-width: 500px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 2rem;
+      text-align: center;
+    }
+    .dashboard-card h2 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 0.75rem;
+      margin: 0.5rem 0;
+      font-size: 1rem;
+      color: #fff;
+      background: var(--primary);
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+      text-decoration: none;
+    }
+    .btn:hover { background: #0056b3; }
+    .btn.logout { background: var(--secondary); }
+    .btn.logout:hover { background: #5a6268; }
+  </style>
+</head>
+<body>
+  <div class="dashboard-card">
+    <h2>Welcome, <span id="username"></span>!</h2>
+    <button class="btn" id="startSessionBtn">Start New Session</button>
+    <button class="btn" id="friendsBtn">Manage Friends</button>
+    <form method="POST" action="/logout">
+      <button type="submit" class="btn logout">Logout</button>
+    </form>
+  </div>
+
+  <script>
+    // Fetch username from session via an API or embed server-side
+    fetch('/api/me')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('username').textContent = data.username;
+      });
+
+    document.getElementById('startSessionBtn').addEventListener('click', () => {
+      window.location.href = 'session.html'; // or wherever your session UI lives
+    });
+    document.getElementById('friendsBtn').addEventListener('click', () => {
+      window.location.href = '/client/friends.html';
+    });
+  </script>
+</body>
+</html>

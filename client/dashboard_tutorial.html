@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome Tutorial - Restaurant Tinder</title>
+  <style>
+    :root {
+      --primary: #007bff;
+      --secondary: #6c757d;
+      --bg: #f8f9fa;
+      --card-bg: #ffffff;
+      --text: #343a40;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .tutorial-card {
+      background: var(--card-bg);
+      width: 100%;
+      max-width: 600px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .header {
+      background: var(--primary);
+      color: #fff;
+      padding: 1rem 1.5rem;
+    }
+    .header h2 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+    .progress {
+      height: 4px;
+      background: #e9ecef;
+      margin: 0;
+      position: relative;
+    }
+    .progress-bar {
+      height: 100%;
+      width: 0;
+      background: var(--primary);
+      transition: width 0.6s ease;
+    }
+    .steps {
+      position: relative;
+      height: 250px;
+      overflow: hidden;
+    }
+    .step {
+      position: absolute;
+      top: 0;
+      left: 100%;
+      width: 100%;
+      padding: 2rem;
+      opacity: 0;
+      transition: all 0.6s ease;
+    }
+    .step.active {
+      left: 0;
+      opacity: 1;
+    }
+    .step.exiting {
+      left: -100%;
+      opacity: 0;
+    }
+    .step h3 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 1.5rem;
+      background: var(--card-bg);
+      border-top: 1px solid #dee2e6;
+    }
+    .footer button {
+      padding: 0.6rem 1.2rem;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .footer button[disabled] {
+      background: var(--secondary);
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <div class="tutorial-card">
+    <div class="header">
+      <h2>Getting Started Guide</h2>
+    </div>
+    <div class="progress"><div class="progress-bar"></div></div>
+    <div class="steps">
+      <div class="step" data-step="1">
+        <h3>Step 1: Create Your Account</h3>
+        <p>Use the registration page to sign up with a username, email, and password.</p>
+      </div>
+      <div class="step" data-step="2">
+        <h3>Step 2: Log In</h3>
+        <p>Enter your credentials on the login page to access your dashboard.</p>
+      </div>
+      <div class="step" data-step="3">
+        <h3>Step 3: Start a Session</h3>
+        <p>Click “Start a New Session”, set your location, radius, cuisine, and invite friends.</p>
+      </div>
+      <div class="step" data-step="4">
+        <h3>Step 4: Swipe Through Options</h3>
+        <p>Review each restaurant’s info and Google reviews. Like or pass to narrow down choices.</p>
+      </div>
+      <div class="step" data-step="5">
+        <h3>Step 5: Match and Enjoy</h3>
+        <p>Once everyone likes the same spot, view the restaurant’s details and get directions.</p>
+      </div>
+    </div>
+    <div class="footer">
+      <button id="prevBtn">Previous</button>
+      <button id="nextBtn">Next</button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const steps = document.querySelectorAll('.step');
+      const bar = document.querySelector('.progress-bar');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      let current = 0;
+
+      function update() {
+        steps.forEach((s, i) => {
+          s.classList.remove('active', 'exiting');
+          if (i === current) s.classList.add('active');
+          if (i < current) s.classList.add('exiting');
+        });
+        const pct = ((current + 1) / steps.length) * 100;
+        bar.style.width = pct + '%';
+        prevBtn.disabled = current === 0;
+        nextBtn.textContent = current === steps.length - 1 ? 'Finish' : 'Next';
+      }
+
+      prevBtn.addEventListener('click', () => {
+        if (current > 0) current--;
+        update();
+      });
+
+      nextBtn.addEventListener('click', () => {
+        if (current < steps.length - 1) current++;
+        else document.querySelector('.tutorial-card').style.display = 'none';
+        update();
+      });
+
+      update();
+    });
+  </script>
+</body>
+</html>
