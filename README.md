@@ -22,18 +22,6 @@ client/   # Front‑end app (React or React Native)
 
 The server exposes an API endpoint `/restaurants` that accepts query parameters for latitude, longitude, radius, and cuisine type. It uses the Google Places API to fetch restaurants and returns the three with the highest ratings.
 
-### Front‑end (`client`)
-
- 0fomhj-codex/create-tinder-style-food-swiping-app
-A lightweight HTML/JavaScript interface is included in `client/index.html`. It fetches restaurants from the server and lets you like or skip each option. Start by opening `client/login.html` in your browser; after entering a user name you will be taken to the swiping interface. Use `client/friends.html` to add friends.
-=======
-wxho8g-codex/create-tinder-style-food-swiping-app
-A lightweight HTML/JavaScript interface is included in `client/index.html`. It fetches restaurants from the server and lets you like or skip each option. Start by opening `client/login.html` in your browser; after entering a user name you will be taken to the swiping interface. Use `client/friends.html` to add friends.
-=======
-
- main
- main
-
 ## Getting Started
 
 1. Install dependencies for the server:
